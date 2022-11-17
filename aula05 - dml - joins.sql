@@ -106,3 +106,19 @@ from 	fornecedores f
 			inner join produtos pd
 				on pd.id = pi.id_produto
         
+-- listar todas os produtos e o nome da categoria
+select categoria.nome, produtos.id, produtos.nome
+from categorias inner join produtos on categorias.id = produtos.id_categoria
+
+select categoria.nome, produtos.id, produtos.nome
+from categorias left join produtos on categorias.id = produtos.id_categoria
+
+select categoria.nome, produtos.id, produtos.nome
+from  produtos 
+            right join  categorias 
+                on categorias.id = produtos.id_categoria
+
+-- listar todos os produtos que nunca foram vendidos???
+select p.*
+from    produtos p left join produtos_vendas pv on p.id = pv.id_produto
+where pv.id is null 
